@@ -1,0 +1,39 @@
+@use '../../../../assets/styles/variables' as *;
+
+button[mat-mini-fab] {
+  background-color: #fff;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: none;
+  width: 36px;
+  height: 36px;
+  transition: background-color 0.14s ease;
+
+  svg {
+    path {
+      transition: fill 0.14s ease ;
+    }
+  }
+
+  &:hover {
+    background-color: #E2EEFF;
+    svg {
+      path {
+        fill: #304879
+      }
+    }
+  }
+
+  &:active {
+    background-color: #B5D3FF;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    svg {
+      path {
+        fill: #A8B0BF;
+      }
+    }
+  }
+}

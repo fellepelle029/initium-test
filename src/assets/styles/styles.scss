@@ -41,3 +41,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: $background-color;
 }
+
+h1 {
+  color: $heading-color;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.15px;
+}
+

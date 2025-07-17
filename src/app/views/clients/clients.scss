@@ -1,0 +1,21 @@
+.clients {
+  h1 {
+    padding: 31px 0 16px 12px;
+  }
+
+  .clients-table {
+    background-color: #ffffff;
+    border-radius: 20px;
+
+    .clients-table-header {
+
+      .clients-table-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 15px;
+      }
+    }
+  }
+}
+
