@@ -11,12 +11,13 @@ button[mat-mini-fab] {
 
   svg {
     path {
-      transition: fill 0.14s ease ;
+      transition: fill 0.14s ease;
     }
   }
 
   &:hover {
     background-color: #E2EEFF;
+
     svg {
       path {
         fill: #304879

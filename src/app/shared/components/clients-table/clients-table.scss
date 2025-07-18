@@ -1,0 +1,89 @@
+@use '@angular/material' as mat;
+@use '../../../../assets/styles/variables' as *;
+
+$table-column-width: 296px;
+$table-select-width: 36px;
+$table-padding-vertical: 15px;
+$table-padding-horizontal: 16px;
+$table-checkbox-color: #bfbfbf;
+$table-border-color: #ABABAC29;
+$table-background: #fff;
+
+.table-container {
+  overflow: auto;
+  max-height: 82vh;
+}
+
+table {
+  .mat-header-row,
+  .mat-row {
+    display: flex;
+    border-bottom: 1px solid $table-border-color;
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+  }
+
+  tr[mat-row] {
+    td[mat-cell] {
+      padding-top: 4px;
+    }
+
+    &:last-child td[mat-cell] {
+      border-bottom: none;
+    }
+  }
+
+  .mat-column-select {
+    width: $table-select-width;
+    padding: 0 0 0 12px;
+    text-align: center;
+
+    @include mat.checkbox-overrides((
+      unselected-icon-color: $table-checkbox-color,
+    ));
+  }
+
+  .mat-column-firstName,
+  .mat-column-lastName,
+  .mat-column-email,
+  .mat-column-phone {
+    width: $table-column-width;
+    max-width: $table-column-width;
+    letter-spacing: 0.2px;
+    padding: $table-padding-vertical 0;
+    margin-right: 10px;
+  }
+
+  .mat-column-firstName {
+    padding-left: 5px;
+  }
+
+  .mat-column-email,
+  .mat-column-phone {
+    text-align: end;
+    padding-right: $table-padding-horizontal;
+  }
+
+  .mat-column-spacer {
+    flex: 1 1 auto;
+    pointer-events: none;
+  }
+
+  @include mat.table-overrides((
+    header-container-height: 16px,
+    header-headline-size: 12px,
+    header-headline-weight: 500,
+    header-headline-line-height: 1,
+    header-headline-color: $table-heading-text-color,
+    row-item-container-height: 16px,
+    row-item-label-text-size: 14px,
+    row-item-label-text-weight: 400,
+    row-item-outline-color: $table-border-color,
+    background-color: $table-background,
+  ));
+}

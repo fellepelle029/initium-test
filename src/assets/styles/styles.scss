@@ -3,8 +3,8 @@
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
-@use 'scss-reset' as *;
 @use '@angular/material' as mat;
+@use 'scss-reset' as *;
 @use 'variables' as *;
 
 html {
@@ -32,7 +32,7 @@ html {
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+html, body{
   height: 100%;
 }
 
@@ -51,3 +51,22 @@ h1 {
   letter-spacing: 0.15px;
 }
 
+
+.os-scrollbar {
+  &-handle {
+    background-color: #D7E1ED !important;
+    border-radius: 4px !important;
+    width: 4px !important;
+    max-height: 250px !important;
+    transition: 0.14s ease;
+
+    &:hover {
+      background-color: rgba(135, 152, 179, 0.61) !important;
+    }
+  }
+  &-track {
+    background-color: transparent !important;
+    margin: 45px 0 !important;
+    max-height: 92% !important;
+  }
+}

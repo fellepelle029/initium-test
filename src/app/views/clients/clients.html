@@ -1,12 +1,14 @@
 <main class="clients">
   <h1>Клиенты</h1>
-
-  <section class="clients-table">
-      <header class="clients-table-header">
-        <div class="clients-table-actions">
-          <app-svg-button type="add"></app-svg-button>
-          <app-svg-button type="remove"></app-svg-button>
-        </div>
-      </header>
+  <section class="clients-table-section">
+    <header class="clients-table-header">
+      <div class="clients-table-actions">
+        <app-svg-button type="add"></app-svg-button>
+        <app-svg-button type="remove"></app-svg-button>
+      </div>
+    </header>
+    <div class="clients-table">
+      <app-clients-table [clients]="clients"></app-clients-table>
+    </div>
   </section>
 </main>
