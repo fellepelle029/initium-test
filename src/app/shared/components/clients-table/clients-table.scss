@@ -29,6 +29,14 @@ table {
   }
 
   tr[mat-row] {
+    &:hover {
+      background: #F6F9FF;
+    }
+
+    &.line-checked {
+      background: #F6F9FF;
+    }
+
     td[mat-cell] {
       padding-top: 4px;
     }
@@ -86,4 +94,12 @@ table {
     row-item-outline-color: $table-border-color,
     background-color: $table-background,
   ));
+}
+
+.client-data {
+  cursor: pointer;
+  &:hover {
+    color: #2F7FD5;
+    text-decoration: underline;
+  }
 }

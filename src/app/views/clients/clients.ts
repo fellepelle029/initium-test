@@ -4,12 +4,14 @@ import {ClientsTable} from '../../shared/components/clients-table/clients-table'
 import {ClientsResponseType, ClientType} from '../../../types/client.type';
 import {ClientsService} from '../../shared/services/clients.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import {Modal} from '../../shared/components/modal/modal';
 
 @Component({
   selector: 'app-clients',
   imports: [
     SvgButton,
-    ClientsTable
+    ClientsTable,
+    Modal
   ],
   standalone: true,
   templateUrl: './clients.html',
@@ -17,6 +19,9 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class Clients implements OnInit{
   public clients: ClientType[] = [];
+  public hasSelection: boolean = false;
+  public modalShown: boolean = false;
+  public modalTitle: string = '';
 
   constructor(private clientService: ClientsService) {
   }
@@ -30,7 +35,7 @@ export class Clients implements OnInit{
   private getClientsData() {
     this.clientService.getClients().subscribe({
       next: (data: ClientsResponseType) => {
-        this.clients = data.users;
+        this.clients = data.users as ClientType[];
       },
       error: (error: HttpErrorResponse) => {
         console.error('ОШИБКА:', error);
@@ -39,5 +44,19 @@ export class Clients implements OnInit{
     })
   }
 
+  // МОДАЛКИ
+  onButtonClick(buttonType: 'add' | 'remove'| 'edit') {
+    if (buttonType === 'add') {
+      this.modalTitle = 'Новый клиент';
+    }
+    if (buttonType === 'remove') {
+      this.modalTitle = 'Удаление строк';
+    }
+    if (buttonType === 'edit') {
+      this.modalTitle = 'Редактирование'
+    }
+
+    this.modalShown = true;
+  }
 }
 

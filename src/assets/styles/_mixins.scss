@@ -1,0 +1,66 @@
+@mixin input-style($border-color: #BBC5C9, $focus-color: #3C7CF8, $error-color: #DA1E28) {
+  width: 368px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  color: #1A2124;
+  transition: border-color 0.14s ease;
+
+  &:focus {
+    border-color: $focus-color;
+  }
+
+  &:focus ~ label,
+  &:not(:placeholder-shown) ~ label {
+    top: -9px;
+    left: 12px;
+    font-size: 12px;
+    color: $focus-color;
+  }
+}
+
+@mixin label-style {
+  position: absolute;
+  top: 17px;
+  left: 16px;
+  color: #BBC5C9;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  background-color: #ffffff;
+  padding: 2px;
+  transition: all 0.14s ease;
+  pointer-events: none;
+}
+
+@mixin btn-style($font-color, $bg, $hover-bg, $active-bg, $disabled-bg: null) {
+  padding: 16px 22px;
+  border-radius: 37px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  color: $font-color;
+  background-color: $bg;
+  transition: background 0.14s ease;
+
+  &:hover {
+    background-color: $hover-bg;
+  }
+
+  &:active {
+    background-color: $active-bg;
+  }
+
+  @if $disabled-bg {
+    &:disabled {
+      background-color: $disabled-bg;
+    }
+  }
+}
+
+

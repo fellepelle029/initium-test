@@ -1,0 +1,32 @@
+<form>
+
+  <div class="input-group">
+    <input id="name" type="text" placeholder="">
+    <label for="name">Имя</label>
+    <div class="input-error">{{errorMessage}}</div>
+  </div>
+
+  <div class="input-group">
+  <input id="surname" type="text" placeholder=" ">
+  <label for="surname">Фамилия</label>
+  <div class="input-error">{{errorMessage}}</div>
+</div>
+
+  <div class="input-group">
+    <input id="e-mail" type="email" placeholder=" ">
+    <label for="e-mail">E-mail</label>
+    <div class="input-error">{{errorMessage}}</div>
+  </div>
+
+  <div class="input-group">
+    <input id="phone" type="tel" placeholder=" ">
+    <label for="phone">Телефон</label>
+    <div class="input-error">{{errorMessage}}</div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-cancel" (click)="closeModal($event)">Отмена</button>
+    <button class="btn btn-save" disabled>Сохранить</button>
+  </div>
+
+</form>

@@ -1,10 +1,11 @@
 export type ClientsResponseType = {
-  users: ClientType[]
+  users: ClientType[],
 }
 
 export type ClientType = {
-  name: string
-  surname: string
-  email: string
-  phone: string
+  id: number,
+  name: string,
+  surname: string,
+  email: string,
+  phone: string,
 }

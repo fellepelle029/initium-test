@@ -1,0 +1,95 @@
+@use '../../../../assets/styles/variables' as *;
+@use '../../../../assets/styles/mixins' as *;
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .input-group {
+    position: relative;
+
+    input {
+      @include input-style();
+
+      &:not(:focus):not(:placeholder-shown) {
+        border-color: #505662;
+
+        ~ label {
+          top: -9px;
+          left: 12px;
+          font-size: 12px;
+          color: #505662;
+        }
+      }
+    }
+
+    &.error {
+      input {
+        border-color: #DA1E28;
+
+        &:focus {
+          border-color: #DA1E28;
+        }
+
+        &:focus ~ label,
+        &:not(:placeholder-shown) ~ label {
+          color: #DA1E28;
+        }
+      }
+
+      .input-error {
+        color: #DA1E28;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    }
+
+    label {
+      @include label-style;
+    }
+
+    .input-error {
+      color: #DA1B1B;
+      text-align: end;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.4px;
+      opacity: 0;
+      transition: opacity 0.14s ease;
+
+      &.error-shown {
+        opacity: 1;
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 8px;
+
+    .btn {
+      &.btn-cancel {
+        @include btn-style(
+            $delete-default-color,
+            transparent,
+            rgba(60, 124, 248, 0.10),
+            rgba(25, 78, 182, 0.20)
+        );
+      }
+
+      &.btn-save {
+        @include btn-style(
+            #fff,
+            $delete-default-color,
+            #3C7CF8,
+            #194EB6,
+            #D8DEE9
+        );
+      }
+    }
+  }
+}

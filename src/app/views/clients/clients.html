@@ -3,15 +3,16 @@
   <section class="clients-table-section">
     <header class="clients-table-header">
       <div class="clients-table-actions">
-        <app-svg-button type="add"></app-svg-button>
-        <app-svg-button type="remove"></app-svg-button>
+        <app-svg-button type="add" (buttonClick)="onButtonClick('add')"></app-svg-button>
+        <app-svg-button type="remove" [disabled]="!hasSelection" (buttonClick)="onButtonClick('remove')"></app-svg-button>
       </div>
     </header>
     <div class="clients-table">
-      <app-clients-table [clients]="clients"></app-clients-table>
+      <app-clients-table [clients]="clients" (selectionChanged)="hasSelection = $event" (selectedUser)="onButtonClick('edit')"></app-clients-table>
     </div>
   </section>
 </main>
 
-
-<section></section>
+@if (modalShown) {
+  <app-modal [title]="modalTitle" (close)="modalShown = false"></app-modal>
+}

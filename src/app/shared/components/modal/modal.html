@@ -1,0 +1,22 @@
+@if (close) {
+  @if (title === 'Новый клиент' || title === 'Редактирование') {
+    <div class="modal-background" >
+      <section class="modal">
+        <h2>{{title}}</h2>
+        <app-form (close)="closeModal()"></app-form>
+      </section>
+    </div>
+  }
+  @if (title === 'Удаление строк') {
+    <div class="modal-background" >
+      <section class="modal delete-modal">
+        <h2>{{title}}</h2>
+        <p>Удалить выбранные строки ({{count}})?</p>
+        <div class="modal-actions">
+          <button class="btn btn-cancel" (click)="closeModal()">Отмена</button>
+          <button class="btn btn-delete">Удалить</button>
+        </div>
+      </section>
+    </div>
+  }
+}

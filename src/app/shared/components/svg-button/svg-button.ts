@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatMiniFabButton} from '@angular/material/button';
 
 @Component({
@@ -12,5 +12,14 @@ import {MatMiniFabButton} from '@angular/material/button';
 })
 export class SvgButton {
   @Input() type: 'add' | 'remove' = 'add';
+  @Input() disabled: boolean = false;
+  @Output() buttonClick = new EventEmitter<'add' | 'remove'>();
+
+
+  onClick(event: Event) {
+    event.preventDefault();
+    this.buttonClick.emit(this.type);
+  }
+
 
 }

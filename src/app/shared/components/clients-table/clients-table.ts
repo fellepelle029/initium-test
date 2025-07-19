@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -13,6 +13,7 @@ import {MatCheckbox} from '@angular/material/checkbox';
 import {OverlayscrollbarsModule} from 'overlayscrollbars-ngx';
 import 'overlayscrollbars/overlayscrollbars.css';
 import {ClientType} from '../../../../types/client.type';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-clients-table',
@@ -28,7 +29,8 @@ import {ClientType} from '../../../../types/client.type';
     MatHeaderRowDef,
     MatRowDef,
     MatCheckbox,
-    OverlayscrollbarsModule
+    OverlayscrollbarsModule,
+    NgClass
   ],
   standalone: true,
   templateUrl: './clients-table.html',
@@ -39,7 +41,8 @@ export class ClientsTable {
   @Input() clients!: ClientType[];
   displayedColumns: string[] = ['select', 'name', 'surname', 'email', 'phone', 'spacer'];
   selection: SelectionModel<ClientType> = new SelectionModel<ClientType>(true, []);
-
+  @Output() selectionChanged = new EventEmitter<boolean>();
+  @Output() selectedUser = new EventEmitter<boolean>();
 
   // ---------
   // ЧЕКБОКСЫ
@@ -54,4 +57,11 @@ export class ClientsTable {
       : this.selection.select(...this.clients);
   }
 
+  onSelectionChange() {
+    this.selectionChanged.emit(this.selection.hasValue());
+  }
+
+  editUser() {
+    this.selectedUser.emit()
+  }
 }
