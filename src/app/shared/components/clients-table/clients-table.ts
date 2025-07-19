@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -12,6 +12,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {OverlayscrollbarsModule} from 'overlayscrollbars-ngx';
 import 'overlayscrollbars/overlayscrollbars.css';
+import {ClientType} from '../../../../types/client.type';
 
 @Component({
   selector: 'app-clients-table',
@@ -32,12 +33,12 @@ import 'overlayscrollbars/overlayscrollbars.css';
   standalone: true,
   templateUrl: './clients-table.html',
   styleUrl: './clients-table.scss',
-  encapsulation: ViewEncapsulation.None
 })
 export class ClientsTable {
-  @Input() clients!: any[];
-  displayedColumns: string[] = ['select', 'firstName', 'lastName', 'email', 'phone', 'spacer'];
-  selection: SelectionModel<any> = new SelectionModel<any>(true, []);
+
+  @Input() clients!: ClientType[];
+  displayedColumns: string[] = ['select', 'name', 'surname', 'email', 'phone', 'spacer'];
+  selection: SelectionModel<ClientType> = new SelectionModel<ClientType>(true, []);
 
 
   // ---------
