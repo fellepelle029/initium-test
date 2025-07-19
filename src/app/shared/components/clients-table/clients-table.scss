@@ -48,8 +48,8 @@ table {
     ));
   }
 
-  .mat-column-firstName,
-  .mat-column-lastName,
+  .mat-column-name,
+  .mat-column-surname,
   .mat-column-email,
   .mat-column-phone {
     width: $table-column-width;
@@ -59,7 +59,7 @@ table {
     margin-right: 10px;
   }
 
-  .mat-column-firstName {
+  .mat-column-name {
     padding-left: 5px;
   }
 
