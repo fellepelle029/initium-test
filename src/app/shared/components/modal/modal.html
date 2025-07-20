@@ -3,7 +3,7 @@
     <div class="modal-background" >
       <section class="modal">
         <h2>{{title}}</h2>
-        <app-form (close)="closeModal()"></app-form>
+        <app-form [client]="client" (formSubmit)="onFormSubmit($event)" (close)="onCloseModal()"></app-form>
       </section>
     </div>
   }
@@ -11,10 +11,10 @@
     <div class="modal-background" >
       <section class="modal delete-modal">
         <h2>{{title}}</h2>
-        <p>Удалить выбранные строки ({{count}})?</p>
+        <p>Удалить выбранные строки ({{selectedClientsCount}})?</p>
         <div class="modal-actions">
-          <button class="btn btn-cancel" (click)="closeModal()">Отмена</button>
-          <button class="btn btn-delete">Удалить</button>
+          <button class="btn btn-cancel" (click)="onCloseModal()">Отмена</button>
+          <button class="btn btn-delete" (click)="onDeleteClients()">Удалить</button>
         </div>
       </section>
     </div>

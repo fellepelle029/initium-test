@@ -11,7 +11,6 @@ form {
 
     input {
       @include input-style();
-
       &:not(:focus):not(:placeholder-shown) {
         border-color: #505662;
 
@@ -20,6 +19,14 @@ form {
           left: 12px;
           font-size: 12px;
           color: #505662;
+        }
+      }
+
+      &:focus {
+        border-color: #3C7CF8;
+
+        ~ label {
+          color: #3C7CF8;
         }
       }
     }
@@ -32,24 +39,36 @@ form {
           border-color: #DA1E28;
         }
 
+        &:not(:focus):not(:placeholder-shown) {
+          border-color: #DA1E28;
+        }
+
         &:focus ~ label,
         &:not(:placeholder-shown) ~ label {
           color: #DA1E28;
         }
       }
 
+      label {
+        color: #DA1E28;
+      }
+
       .input-error {
         color: #DA1E28;
         font-size: 12px;
         margin-top: 4px;
+        opacity: 1;
       }
     }
 
     label {
       @include label-style;
+      transition: color 0.2s ease;
     }
 
     .input-error {
+      position: absolute;
+      right: 0;
       color: #DA1B1B;
       text-align: end;
       font-size: 12px;

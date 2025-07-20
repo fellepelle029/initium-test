@@ -3,16 +3,28 @@
   <section class="clients-table-section">
     <header class="clients-table-header">
       <div class="clients-table-actions">
-        <app-svg-button type="add" (buttonClick)="onButtonClick('add')"></app-svg-button>
-        <app-svg-button type="remove" [disabled]="!hasSelection" (buttonClick)="onButtonClick('remove')"></app-svg-button>
+        <app-svg-button type="add" (buttonClick)="modalHandler('add')"></app-svg-button>
+        <app-svg-button type="remove" [disabled]="!hasSelection" (buttonClick)="modalHandler('remove')"></app-svg-button>
       </div>
     </header>
     <div class="clients-table">
-      <app-clients-table [clients]="clients" (selectionChanged)="hasSelection = $event" (selectedUser)="onButtonClick('edit')"></app-clients-table>
+      <app-clients-table
+        [clients]="clients"
+        [clearTableSelection]="clearTableSelection"
+        (selectionChanged)="onSelectionChanged($event)"
+        (onEditClient)="modalHandler('edit', $event)">
+      </app-clients-table>
     </div>
   </section>
 </main>
 
 @if (modalShown) {
-  <app-modal [title]="modalTitle" (close)="modalShown = false"></app-modal>
+  <app-modal
+    [title]="modalTitle"
+    [client]="selectedClient"
+    [selectedClientsCount]="selectedClients.length"
+    (submitClient)="handleFormSubmit($event)"
+    (deleteClients)="handleDeleteClients()"
+    (close)="modalShown = false">
+  </app-modal>
 }

@@ -11,15 +11,12 @@ import {MatMiniFabButton} from '@angular/material/button';
   styleUrl: './svg-button.scss'
 })
 export class SvgButton {
-  @Input() type: 'add' | 'remove' = 'add';
-  @Input() disabled: boolean = false;
-  @Output() buttonClick = new EventEmitter<'add' | 'remove'>();
+  @Input() type: 'add' | 'remove' = 'add';                                                   // принимаем с родителя тип кнопки для рендера нужной СВГ
+  @Input() disabled: boolean = false;                                                        // контролируем доступность корзины, на случай если не были чекенуты клиенты
+  @Output() buttonClick = new EventEmitter<'add' | 'remove'>();       // пробрасываем наружу нажатие на кнопки "создать"/"удалить"
 
-
-  onClick(event: Event) {
-    event.preventDefault();
+  // НАЖАТИЕ НА КНОПКУ
+  onClick() {
     this.buttonClick.emit(this.type);
   }
-
-
 }

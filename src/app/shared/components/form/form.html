@@ -1,32 +1,32 @@
-<form>
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
 
-  <div class="input-group">
-    <input id="name" type="text" placeholder="">
+  <div class="input-group" [class.error]="isInvalid('name')">
+    <input id="name" type="text" placeholder=" " formControlName="name">
     <label for="name">Имя</label>
-    <div class="input-error">{{errorMessage}}</div>
+    <div class="input-error">Поле обязательно / минимум 2 символа</div>
   </div>
 
-  <div class="input-group">
-  <input id="surname" type="text" placeholder=" ">
-  <label for="surname">Фамилия</label>
-  <div class="input-error">{{errorMessage}}</div>
-</div>
+  <div class="input-group" [class.error]="isInvalid('surname')">
+    <input id="surname" type="text" placeholder=" " formControlName="surname">
+    <label for="surname">Фамилия</label>
+    <div class="input-error">Поле обязательно / минимум 2 символа</div>
+  </div>
 
-  <div class="input-group">
-    <input id="e-mail" type="email" placeholder=" ">
+  <div class="input-group" [class.error]="isInvalid('email')">
+    <input id="e-mail" type="email" placeholder=" " formControlName="email">
     <label for="e-mail">E-mail</label>
-    <div class="input-error">{{errorMessage}}</div>
+    <div class="input-error">Неверный формат E-mail</div>
   </div>
 
-  <div class="input-group">
-    <input id="phone" type="tel" placeholder=" ">
+  <div class="input-group" [class.error]="isInvalid('phone')">
+    <input id="phone" type="tel" placeholder=" " formControlName="phone">
     <label for="phone">Телефон</label>
-    <div class="input-error">{{errorMessage}}</div>
+    <div class="input-error">Неверный номер телефона</div>
   </div>
 
   <div class="form-actions">
-    <button class="btn btn-cancel" (click)="closeModal($event)">Отмена</button>
-    <button class="btn btn-save" disabled>Сохранить</button>
+    <button class="btn btn-cancel" type="button" (click)="closeModal($event)">Отмена</button>
+    <button class="btn btn-save" type="submit" [disabled]="clientForm.invalid">Сохранить</button>
   </div>
 
 </form>
