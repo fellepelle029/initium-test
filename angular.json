@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular/build:application:browser",
           "options": {
             "browser": "src/main.ts",
             "polyfills": [
@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/assets/styles/styles.scss"
-            ]
+            ],
+            "outputPath": "dist/initium-test"
           },
           "configurations": {
             "production": {
