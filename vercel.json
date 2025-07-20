@@ -1,0 +1,12 @@
+{
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/initium-test",
+  "devCommand": "ng serve --port $PORT",
+  "installCommand": "npm install",
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ]
+}
