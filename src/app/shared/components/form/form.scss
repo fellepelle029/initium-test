@@ -63,7 +63,7 @@ form {
 
     label {
       @include label-style;
-      transition: color 0.2s ease;
+      transition: all 0.14s ease;
     }
 
     .input-error {
