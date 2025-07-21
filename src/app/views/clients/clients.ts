@@ -38,7 +38,7 @@ export class Clients implements OnInit {
   // РЕНДЕР КЛИЕНТОВ ИЗ ХРАНИЛИЩА ИЛИ ГЕТ-ЗАПРОСОМ
   private renderClients(): void {
     const storedClients: string | null = localStorage.getItem('clients');
-    if (storedClients) {
+    if (storedClients && this.isStorageNotEmpty(storedClients)) {
       try {
         this.clients = JSON.parse(storedClients)
       }
@@ -141,6 +141,10 @@ export class Clients implements OnInit {
     return this.clients.filter(client =>                                       // тут фильтруем/пересоздаем (оставляем только тех для кого true) массив клиентов
       !this.selectedClients.some(selectedClient => selectedClient === client)  // тут проверяем есть ли у нас selectedClients (ченутых клиентах) клиент равный клиенту по которому проходим.
     );
+  }
+
+  private isStorageNotEmpty(array: string): boolean {
+    return JSON.parse(array).length > 0
   }
 }
 
